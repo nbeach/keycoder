@@ -2,13 +2,13 @@
 
   if (typeof module === "object" && typeof module.exports === "object") {
     module.exports = factory();
-  } else if(typeof define === 'function' && define.amd && define.amd.KeyCoder === true) {
-      define('KeyCoder', [], factory);
+  } else if(typeof define === 'function' && define.amd && define.amd.Keycoder === true) {
+      define('Keycoder', [], factory);
   } else {
-    window.KeyCoder = factory();
+    window.Keycoder = factory();
   }
 
-}(typeof window !== "undefined" ? window : this, function KeyCoderFactory() {
+}(typeof window !== "undefined" ? window : this, function KeycoderFactory() {
 
   var keyData = [
     { char: "0", shift: ")", ie: 48, ascii: { norm: 48, shift: 41 } },
@@ -218,7 +218,7 @@
 
   });
 
-  return new (function KeyCoder() {
+  return new (function Keycoder() {
     this.key = namedKeys;
 
     this.toCharacter = function(keyCode, shift) {
