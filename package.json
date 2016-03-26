@@ -1,0 +1,22 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "gulp",
+    "build:watch": "gulp build:watch",
+    "test": "karma start",
+    "test:watch": "karma start --auto-watch --no-single-run"
+  },
+  "dependencies": {
+    "jasmine-core": "^2.4.1",
+    "karma": "^0.13.14",
+    "karma-jasmine": "^0.3.6",
+    "karma-phantomjs-launcher": "^0.2.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^1.5.3"
+  }
+}
