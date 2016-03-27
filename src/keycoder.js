@@ -356,7 +356,7 @@
     };
 
     /**
-     * @returns {Array} An array of Key objects for all keys
+     * @returns {Key[]} An array of Key objects for all keys
      */
     this.allKeys = function() {
       var keys = [];
