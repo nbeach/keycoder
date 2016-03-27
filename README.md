@@ -150,7 +150,7 @@ Maps an ASCII character code to a Key object
 
 | Name | Type | Description |
 | --- | --- | --- |
-| names | <code>Array.&lt;string&gt;</code> | Key names. Ex. BACKSPACE |
+| names | <code>Array.&lt;string&gt;</code> | Names that the key is called. Ex. "BACKSPACE", "INSERT" |
 | keyCode.ie | <code>number</code> | IE key code |
 | keyCode.mozilla | <code>number</code> | Mozillia key code |
 | character | <code>string</code> | Key character |
