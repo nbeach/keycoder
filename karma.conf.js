@@ -6,7 +6,10 @@ module.exports = function(config) {
       'src/*.js',
       'test/*.js'
     ],
-    reporters: ['progress'],
+    preprocessors: {
+      'src/*.js': 'coverage'
+    },
+    reporters: ['progress', 'coverage'],
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: false,
