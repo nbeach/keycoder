@@ -61,14 +61,24 @@ describe('KeyCoder', function() {
       expect(Keycoder.fromCharacter('a').shift.character).not.toBe('-');
     });
 
-    it('IE key codes', function() {
+    it('Mozilla key codes', function() {
       changedAKey.keyCode.mozilla = -1;
       expect(Keycoder.fromCharacter('a').keyCode.mozilla).not.toBe(-1);
     });
 
-    it('Mozilla key codes', function() {
+    it('IE key codes', function() {
       changedAKey.keyCode.ie = -1;
       expect(Keycoder.fromCharacter('a').keyCode.ie).not.toBe(-1);
+    });
+
+    it('character codes', function() {
+      changedAKey.charCode = -1;
+      expect(Keycoder.fromCharCode(97).charCode).not.toBe(-1);
+    });
+
+    it('shift character codes', function() {
+      changedAKey.charCode = -1;
+      expect(Keycoder.fromCharCode(65).charCode).not.toBe(-1);
     });
 
   });
@@ -224,7 +234,7 @@ describe('KeyCoder', function() {
 
       Keycoder.allKeys().forEach(function(key) {
         if(key.charCode !== null) {
-          var mappedKey = Keycoder.charCodeToCharacter(key.charCode);
+          var mappedKey = Keycoder.fromCharCode(key.charCode);
           expect(mappedKey.charCode).toBe(key.charCode);
         }
       });
@@ -235,8 +245,30 @@ describe('KeyCoder', function() {
 
       Keycoder.allKeys().forEach(function(key) {
         if(key.shift.charCode !== null) {
-          var mappedKey = Keycoder.charCodeToCharacter(key.shift.charCode);
+          var mappedKey = Keycoder.fromCharCode(key.shift.charCode);
           expect(mappedKey.shift.charCode).toBe(key.shift.charCode);
+        }
+      });
+
+    });
+
+    it('all ASCII char codes to characters', function() {
+
+      Keycoder.allKeys().forEach(function(key) {
+        if(key.charCode !== null) {
+          var mappedCharacter = Keycoder.charCodeToCharacter(key.charCode);
+          expect(mappedCharacter).toBe(key.character);
+        }
+      });
+
+    });
+
+    it('all ASCII shift char codes to characters', function() {
+
+      Keycoder.allKeys().forEach(function(key) {
+        if(key.shift.charCode !== null) {
+          var mappedCharacter = Keycoder.charCodeToCharacter(key.shift.charCode);
+          expect(mappedCharacter).toBe(key.shift.character);
         }
       });
 
