@@ -11,7 +11,7 @@ module.exports = function(config) {
       'test/**/*Spec.js'
     ],
     preprocessors: {
-      'dist/keycoder.js': 'coverage'
+      'src/**/*.js': 'coverage'
     },
     reporters: ['progress', 'coverage'],
     colors: true,
