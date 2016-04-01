@@ -3,11 +3,11 @@ module.exports = function(config) {
     basePath: '',
     frameworks: ['jasmine'],
     files: [
-      'src/*.js',
-      'test/*.js'
+      'dist/keycoder.js',
+      'test/**/*.js'
     ],
     preprocessors: {
-      'src/*.js': 'coverage'
+      'dist/keycoder.js': 'coverage'
     },
     reporters: ['progress', 'coverage'],
     colors: true,

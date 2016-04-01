@@ -22,11 +22,10 @@ A lightweight JavaScript library for interpreting event key and character codes 
 
 * [Keycoder](#module_Keycoder)
     * [.key](#module_Keycoder.key) : <code>object</code>
-    * [.toCharacter(keyCode, shift)](#module_Keycoder.toCharacter) ⇒ <code>string</code>
-    * [.charCodeToCharacter(charCode)](#module_Keycoder.charCodeToCharacter) ⇒ <code>string</code>
-    * [.fromCharacter(character)](#module_Keycoder.fromCharacter) ⇒ <code>[Key](#Key)</code>
-    * [.fromKeyCode(keyCode)](#module_Keycoder.fromKeyCode) ⇒ <code>[Key](#Key)</code>
-    * [.fromCharCode(charCode)](#module_Keycoder.fromCharCode) ⇒ <code>[Key](#Key)</code>
+    * [.charCodeToCharacter(charCode)](#module_Keycoder.charCodeToCharacter) ⇒ <code>string</code> &#124; <code>null</code>
+    * [.fromCharacter(character)](#module_Keycoder.fromCharacter) ⇒ <code>[Key](#Key)</code> &#124; <code>null</code>
+    * [.fromKeyCode(keyCode)](#module_Keycoder.fromKeyCode) ⇒ <code>[Key](#Key)</code> &#124; <code>null</code>
+    * [.fromCharCode(charCode)](#module_Keycoder.fromCharCode) ⇒ <code>[Key](#Key)</code> &#124; <code>null</code>
     * [.allKeys()](#module_Keycoder.allKeys) ⇒ <code>[Array.&lt;Key&gt;](#Key)</code>
 
 <a name="module_Keycoder.key"></a>
@@ -83,22 +82,11 @@ An object containing references to all named keys.
 | NUMPAD_DIVIDE | <code>[Key](#Key)</code> | 
 | NUMPAD_MIDDLE | <code>[Key](#Key)</code> | 
 
-<a name="module_Keycoder.toCharacter"></a>
-
-### Keycoder.toCharacter(keyCode, shift) ⇒ <code>string</code>
-**Kind**: static method of <code>[Keycoder](#module_Keycoder)</code>  
-**Returns**: <code>string</code> - The character for the keycode and shift state. Null if the key is not a printable character.  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| keyCode | <code>number</code> | An IE or Mozilla key code |
-| shift | <code>boolean</code> | The shift key state. A value of true indicates it is pressed, false that it is not |
-
 <a name="module_Keycoder.charCodeToCharacter"></a>
 
-### Keycoder.charCodeToCharacter(charCode) ⇒ <code>string</code>
+### Keycoder.charCodeToCharacter(charCode) ⇒ <code>string</code> &#124; <code>null</code>
 **Kind**: static method of <code>[Keycoder](#module_Keycoder)</code>  
-**Returns**: <code>string</code> - Returns that character for the keycode and shift state. Null if the key is not a printable character.  
+**Returns**: <code>string</code> &#124; <code>null</code> - Returns that character for the keycode and shift state. Null if the key is not a printable character.  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -106,9 +94,9 @@ An object containing references to all named keys.
 
 <a name="module_Keycoder.fromCharacter"></a>
 
-### Keycoder.fromCharacter(character) ⇒ <code>[Key](#Key)</code>
+### Keycoder.fromCharacter(character) ⇒ <code>[Key](#Key)</code> &#124; <code>null</code>
 **Kind**: static method of <code>[Keycoder](#module_Keycoder)</code>  
-**Returns**: <code>[Key](#Key)</code> - A Key object. Null if no key is associated with the provided code.  
+**Returns**: <code>[Key](#Key)</code> &#124; <code>null</code> - A Key object. Null if no key is associated with the provided code.  
 
 | Param | Type |
 | --- | --- |
@@ -116,9 +104,9 @@ An object containing references to all named keys.
 
 <a name="module_Keycoder.fromKeyCode"></a>
 
-### Keycoder.fromKeyCode(keyCode) ⇒ <code>[Key](#Key)</code>
+### Keycoder.fromKeyCode(keyCode) ⇒ <code>[Key](#Key)</code> &#124; <code>null</code>
 **Kind**: static method of <code>[Keycoder](#module_Keycoder)</code>  
-**Returns**: <code>[Key](#Key)</code> - A Key object. Null if no key is associated with the provided code.  
+**Returns**: <code>[Key](#Key)</code> &#124; <code>null</code> - A Key object. Null if no key is associated with the provided code.  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -126,11 +114,11 @@ An object containing references to all named keys.
 
 <a name="module_Keycoder.fromCharCode"></a>
 
-### Keycoder.fromCharCode(charCode) ⇒ <code>[Key](#Key)</code>
+### Keycoder.fromCharCode(charCode) ⇒ <code>[Key](#Key)</code> &#124; <code>null</code>
 Maps an ASCII character code to a Key object
 
 **Kind**: static method of <code>[Keycoder](#module_Keycoder)</code>  
-**Returns**: <code>[Key](#Key)</code> - A Key object. Null if no key is associated with the provided code.  
+**Returns**: <code>[Key](#Key)</code> &#124; <code>null</code> - A Key object. Null if no key is associated with the provided code.  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -153,10 +141,10 @@ Maps an ASCII character code to a Key object
 | names | <code>Array.&lt;string&gt;</code> | Names that the key is called. Ex. "BACKSPACE", "INSERT" |
 | keyCode.ie | <code>number</code> | IE key code |
 | keyCode.mozilla | <code>number</code> | Mozillia key code |
-| character | <code>string</code> | Key character |
-| charCode | <code>number</code> | ASCII character code |
-| shift.character | <code>string</code> | Key shift character |
-| shift.charCode | <code>number</code> | Shift ASCII character code |
+| character | <code>string</code> &#124; <code>null</code> | Key character |
+| charCode | <code>number</code> &#124; <code>null</code> | ASCII character code |
+| shift.character | <code>string</code> &#124; <code>null</code> | Key shift character |
+| shift.charCode | <code>number</code> &#124; <code>null</code> | Shift ASCII character code |
 
 
 * [Key](#Key)
