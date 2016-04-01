@@ -3,8 +3,12 @@ module.exports = function(config) {
     basePath: '',
     frameworks: ['jasmine'],
     files: [
-      'dist/keycoder.js',
-      'test/**/*.js'
+      'src/exports.js',
+      'src/modules/Util.js',
+      'src/modules/KeyData.js',
+      'src/modules/Key.js',
+      'src/modules/Keycoder.js',
+      'test/**/*Spec.js'
     ],
     preprocessors: {
       'dist/keycoder.js': 'coverage'

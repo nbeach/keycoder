@@ -199,3 +199,5 @@ var Keycoder = new (function(Util, Key, keyData) {
   };
 
 })(Util, KeyConstructor, KeyData);
+
+exports('Keycoder', Keycoder);

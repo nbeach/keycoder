@@ -11,14 +11,14 @@ var gulpJsdoc2md = require('gulp-jsdoc-to-markdown');
 gulp.task('build', function() {
   return gulp
     .src([
+      'src/exports.js',
       'src/modules/Util.js',
       'src/modules/KeyData.js',
       'src/modules/Key.js',
-      'src/modules/Keycoder.js',
-      'src/export.js'
+      'src/modules/Keycoder.js'
     ])
     .pipe(concat('keycoder.js'))
-    .pipe(wrap('(function(global){\r\n<%= contents %>\r\n}(typeof window !== "undefined" ? window : this));'))
+    .pipe(wrap('(function(){\r\n<%= contents %>\r\n}();'))
     .pipe(sourcemaps.init())
     .pipe(gulp.dest('dist/'))
     .pipe(rename('keycoder.min.js'))

@@ -1,23 +1,5 @@
 describe('KeyCoder', function() {
 
-  describe('allows loading by', function() {
-
-    it('global scope', function() {
-      expect(typeof window.Keycoder).not.toBe('undefined');
-    });
-
-    //TODO: Devise tests for other module loading strategies
-    //it('CommonJS', function() {
-    //
-    //});
-    //
-    //it('AMD', function() {
-    //
-    //});
-
-  });
-
-
   it('creates all named keys', function() {
 
     Keycoder.allKeys().forEach(function(key) {
