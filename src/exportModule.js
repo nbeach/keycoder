@@ -1,4 +1,4 @@
-function exports(name, moduleObj) {
+function exportModule(name, moduleObj) {
   if (typeof module === "object" && typeof module.exports === "object") {
     module.exports = moduleObj;
 
@@ -9,5 +9,4 @@ function exports(name, moduleObj) {
     var global = typeof window === 'undefined' ? this : window;
     global[name] = moduleObj;
   }
-
 }

@@ -1,4 +1,4 @@
-describe('exports', function() {
+describe('exportModule', function() {
 
   describe('allows loading by', function() {
     var moduleName, mockModule;
@@ -11,15 +11,15 @@ describe('exports', function() {
       mockModule = jasmine.createSpyObj('mockModule', ['doSomething']);
     });
 
-    it('global scope', function() {
-      exports(moduleName, mockModule);
+    it('global', function() {
+      exportModule(moduleName, mockModule);
       window[moduleName].doSomething();
       expect(window[moduleName]).toBe(mockModule);
     });
 
     it('CommonJS', function() {
       module = { exports: {} };
-      exports(moduleName, mockModule);
+      exportModule(moduleName, mockModule);
       expect(module.exports).toBe(mockModule);
     });
 
@@ -30,9 +30,7 @@ describe('exports', function() {
         actualModule = moduleFactory();
       };
       define.amd = {};
-      define.amd[moduleName] = true;
-
-      exports(moduleName, mockModule);
+      exportModule(moduleName, mockModule);
 
       expect(actualName).toBe(moduleName);
       expect(actualModule).toBe(mockModule);

@@ -8,30 +8,29 @@ var addsrc = require('gulp-add-src');
 var sourcemaps = require('gulp-sourcemaps');
 var gulpJsdoc2md = require('gulp-jsdoc-to-markdown');
 
+var DESTINATION_DIR = 'dist/';
+var OUTPUT_FILENAME = 'keycoder.js';
+var MINIFIED_FILENAME = OUTPUT_FILENAME.replace('.js', '.min.js');
+var sourceFiles = require('./source-files');
+
 gulp.task('build', function() {
   return gulp
-    .src([
-      'src/exports.js',
-      'src/modules/Util.js',
-      'src/modules/KeyData.js',
-      'src/modules/Key.js',
-      'src/modules/Keycoder.js'
-    ])
-    .pipe(concat('keycoder.js'))
+    .src(sourceFiles)
+    .pipe(concat(OUTPUT_FILENAME))
     .pipe(wrap('(function(){\r\n<%= contents %>\r\n})();'))
     .pipe(sourcemaps.init())
-    .pipe(gulp.dest('dist/'))
-    .pipe(rename('keycoder.min.js'))
+    .pipe(gulp.dest(DESTINATION_DIR))
+    .pipe(rename(MINIFIED_FILENAME))
     .pipe(uglify({
       mangle: true
     }))
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest('dist/'));
+    .pipe(gulp.dest(DESTINATION_DIR));
 });
 
 gulp.task('document', ['build'], function () {
   return gulp
-    .src(['dist/keycoder.js'])
+    .src([DESTINATION_DIR + OUTPUT_FILENAME])
     .pipe(gulpJsdoc2md())
     .pipe(addsrc.prepend('project-info.md'))
     .pipe(concat('README.md'))

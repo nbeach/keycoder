@@ -1,7 +1,7 @@
 /**
  * @module Keycoder
  */
-var Keycoder = new (function(Util, Key, keyData) {
+exportModule('Keycoder', new (function(Util, Key, keyData) {
   var keyCodeToKeyMap = null;
   var asciiCodeToKeyMap = null;
   var characterToKeyMap = null;
@@ -198,6 +198,4 @@ var Keycoder = new (function(Util, Key, keyData) {
     return keys;
   };
 
-})(Util, KeyConstructor, KeyData);
-
-exports('Keycoder', Keycoder);
+})(Util, KeyConstructor, KeyData));

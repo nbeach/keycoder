@@ -1,15 +1,13 @@
+var sourceFiles = require('./source-files');
+
+var files = sourceFiles;
+files.push('test/**/*Spec.js');
+
 module.exports = function(config) {
   config.set({
     basePath: '',
     frameworks: ['jasmine'],
-    files: [
-      'src/exports.js',
-      'src/modules/Util.js',
-      'src/modules/KeyData.js',
-      'src/modules/Key.js',
-      'src/modules/Keycoder.js',
-      'test/**/*Spec.js'
-    ],
+    files: files,
     preprocessors: {
       'src/**/*.js': 'coverage'
     },
