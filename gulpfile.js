@@ -18,7 +18,7 @@ gulp.task('build', function() {
       'src/modules/Keycoder.js'
     ])
     .pipe(concat('keycoder.js'))
-    .pipe(wrap('(function(){\r\n<%= contents %>\r\n}();'))
+    .pipe(wrap('(function(){\r\n<%= contents %>\r\n})();'))
     .pipe(sourcemaps.init())
     .pipe(gulp.dest('dist/'))
     .pipe(rename('keycoder.min.js'))
