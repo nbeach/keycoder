@@ -215,9 +215,16 @@ describe('KeyCoder', function() {
     it('all ASCII char codes to keys', function() {
 
       Keycoder.allKeys().forEach(function(key) {
-        if(key.charCode !== null) {
-          var mappedKey = Keycoder.fromCharCode(key.charCode);
-          expect(mappedKey.charCode).toBe(key.charCode);
+
+        //Skip the numpad keys since their char codes match those of the other number keys
+        //they won't map back to the same value
+        if(key.shift.charCode < 42 || key.shift.charCode > 57) {
+
+          if (key.charCode !== null) {
+            var mappedKey = Keycoder.fromCharCode(key.charCode);
+            expect(mappedKey.charCode).toBe(key.charCode);
+          }
+
         }
       });
 
@@ -226,9 +233,16 @@ describe('KeyCoder', function() {
     it('all ASCII shift char codes to keys', function() {
 
       Keycoder.allKeys().forEach(function(key) {
-        if(key.shift.charCode !== null) {
-          var mappedKey = Keycoder.fromCharCode(key.shift.charCode);
-          expect(mappedKey.shift.charCode).toBe(key.shift.charCode);
+
+        //Skip the numpad keys since their char codes match those of the other number keys
+        //they won't map back to the same value
+        if(key.shift.charCode < 42 || key.shift.charCode > 57) {
+
+          if (key.shift.charCode !== null) {
+            var mappedKey = Keycoder.fromCharCode(key.shift.charCode);
+            expect(mappedKey.shift.charCode).toBe(key.shift.charCode);
+          }
+
         }
       });
 
@@ -237,7 +251,7 @@ describe('KeyCoder', function() {
     it('all ASCII char codes to characters', function() {
 
       Keycoder.allKeys().forEach(function(key) {
-        if(key.charCode !== null) {
+        if(key.charCode !== null && key.character != null) {
           var mappedCharacter = Keycoder.charCodeToCharacter(key.charCode);
           expect(mappedCharacter).toBe(key.character);
         }
@@ -248,7 +262,8 @@ describe('KeyCoder', function() {
     it('all ASCII shift char codes to characters', function() {
 
       Keycoder.allKeys().forEach(function(key) {
-        if(key.shift.charCode !== null) {
+
+        if(key.shift.charCode !== null && key.shift.character != null) {
           var mappedCharacter = Keycoder.charCodeToCharacter(key.shift.charCode);
           expect(mappedCharacter).toBe(key.shift.character);
         }

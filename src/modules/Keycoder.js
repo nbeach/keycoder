@@ -93,9 +93,14 @@ exportModule('Keycoder', new (function(Util, Key, keyData) {
     keyData.forEach(function (key) {
 
       if (!Util.isUndefined(key.ascii)) {
-        asciiCodeToKeyMap[key.ascii.norm] = key;
+        if(Util.isUndefined(asciiCodeToKeyMap[key.ascii.norm])) {
+          asciiCodeToKeyMap[key.ascii.norm] = key;
+        }
+
         if (!Util.isUndefined(key.ascii.shift)) {
-          asciiCodeToKeyMap[key.ascii.shift] = key;
+          if(Util.isUndefined(asciiCodeToKeyMap[key.ascii.shift])) {
+            asciiCodeToKeyMap[key.ascii.shift] = key;
+          }
         }
       }
 
