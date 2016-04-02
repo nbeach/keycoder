@@ -1,5 +1,5 @@
 {
-  "name": "Keycoder",
+  "name": "keycoder",
   "version": "1.0.0",
   "description": "A lightweight JavaScript library for interpreting event key and character codes across browsers.",
   "main": "dist/keycoder.js",
@@ -11,12 +11,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/nbeach/Keycoder.git"
+    "url": "git://github.com/nbeach/keycoder.git"
   },
   "author": "Nicholas Beach <nicholas.c.beach@gmail.com> (http://nicholasbeach.com)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/nbeach/Keycoder/issues"
+    "url": "https://github.com/nbeach/keycoder/issues"
   },
   "dependencies": {
     "jasmine-core": "^2.4.1",
