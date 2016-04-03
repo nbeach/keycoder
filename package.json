@@ -18,6 +18,16 @@
   "bugs": {
     "url": "https://github.com/nbeach/keycoder/issues"
   },
+  "keywords": [
+    "keyCode",
+    "charCode",
+    "keypress",
+    "keydown",
+    "keyup",
+    "key",
+    "code",
+    "ascii"
+  ],
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-add-src": "^0.2.0",
