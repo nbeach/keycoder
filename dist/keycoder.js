@@ -331,7 +331,6 @@ exportModule('Keycoder', new (function(Util, Key, keyData) {
 
 
   /**
-   * @memberof Keycoder
    * @param {number} keyCode - An IE or Mozilla key code
    * @param {boolean} shift - The shift key state. A value of true indicates it is pressed, false that it is not
    * @returns {string|null} The character for the keycode and shift state. Null if the key is not a printable character.

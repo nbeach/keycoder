@@ -24,6 +24,7 @@ Keycoder is released under the [MIT license](https://github.com/nbeach/keycoder/
 
 * [Keycoder](#module_Keycoder)
     * [.key](#module_Keycoder.key) : <code>object</code>
+    * [.toCharacter(keyCode, shift)](#module_Keycoder.toCharacter) ⇒ <code>string</code> &#124; <code>null</code>
     * [.charCodeToCharacter(charCode)](#module_Keycoder.charCodeToCharacter) ⇒ <code>string</code> &#124; <code>null</code>
     * [.fromCharacter(character)](#module_Keycoder.fromCharacter) ⇒ <code>[Key](#Key)</code> &#124; <code>null</code>
     * [.fromKeyCode(keyCode)](#module_Keycoder.fromKeyCode) ⇒ <code>[Key](#Key)</code> &#124; <code>null</code>
@@ -83,6 +84,17 @@ An object containing references to all named keys.
 | NUMPAD_DECIMAL | <code>[Key](#Key)</code> | 
 | NUMPAD_DIVIDE | <code>[Key](#Key)</code> | 
 | NUMPAD_MIDDLE | <code>[Key](#Key)</code> | 
+
+<a name="module_Keycoder.toCharacter"></a>
+
+### Keycoder.toCharacter(keyCode, shift) ⇒ <code>string</code> &#124; <code>null</code>
+**Kind**: static method of <code>[Keycoder](#module_Keycoder)</code>  
+**Returns**: <code>string</code> &#124; <code>null</code> - The character for the keycode and shift state. Null if the key is not a printable character.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| keyCode | <code>number</code> | An IE or Mozilla key code |
+| shift | <code>boolean</code> | The shift key state. A value of true indicates it is pressed, false that it is not |
 
 <a name="module_Keycoder.charCodeToCharacter"></a>
 
