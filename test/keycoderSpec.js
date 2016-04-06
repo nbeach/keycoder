@@ -158,118 +158,90 @@ describe('KeyCoder', function() {
 
   describe('maps', function() {
 
-    it('all printable characters to keys', function() {
-      var characters = ' 0123456789abcdefghijklmnopqrstuvwxyz`-=[]\\;\',./';
-      var shiftCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ~!@#$%^&*()_+{}|:"<>?';
-      var character, key, i;
+    describe('printable character', function() {
 
+      var characters = ' 0123456789abcdefghijklmnopqrstuvwxyz`-=[]\\;\',./'.split('');
+      characters.forEach(function(character) {
 
-      for(i = 0; i < characters.length; i++) {
-        character = characters.charAt(i);
-        key = Keycoder.fromCharacter(character);
+        it(character + 'to a key', function() {
+          var key = Keycoder.fromCharacter(character);
+          expect(key.character).toBe(character);
+        });
 
-        expect(key.character).toBe(character);
-      }
+      });
 
-      for(i = 0; i < shiftCharacters.length; i++) {
-        character = shiftCharacters.charAt(i);
-        key = Keycoder.fromCharacter(character);
+      var shiftCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ~!@#$%^&*()_+{}|:"<>?'.split('');
+      shiftCharacters.forEach(function(character) {
 
-        expect(key.shift.character).toBe(character);
-      }
+        it(character + 'to a key', function() {
+          var key = Keycoder.fromCharacter(character);
+          expect(key.shift.character).toBe(character);
+
+        });
+
+      });
 
     });
 
-    it('all keys to with printable characters to characters', function() {
+    Keycoder.allKeys().forEach(function(key) {
 
-      Keycoder.allKeys().forEach(function(key) {
-        if(key.character !== null) {
+      if(key.character !== null) {
+        it('IE keycode '+ key.keyCode.ie + ' to ' + key.character, function() {
           var ieCharacter = Keycoder.toCharacter(key.keyCode.ie);
-          var mozillaCharacter = Keycoder.toCharacter(key.keyCode.mozilla);
-
           expect(ieCharacter).toBe(key.character);
+        });
+
+        it('Mozilla keycode '+ key.keyCode.mozilla + ' to ' + key.character, function() {
+          var mozillaCharacter = Keycoder.toCharacter(key.keyCode.mozilla);
           expect(mozillaCharacter).toBe(key.character);
-        }
+        });
+      }
+
+      it('Mozilla key code ' + key.keyCode.mozilla + ' to a key', function() {
+          var mappedKey = Keycoder.fromKeyCode(key.keyCode.mozilla);
+          expect(mappedKey.keyCode.mozilla).toBe(key.keyCode.mozilla);
       });
 
-    });
+      it('IE key code ' + key.keyCode.ie + ' to a key', function() {
+          var mappedKey = Keycoder.fromKeyCode(key.keyCode.ie);
+          expect(mappedKey.keyCode.ie).toBe(key.keyCode.ie);
 
-    it('all Mozilla key codes to keys', function() {
-
-      Keycoder.allKeys().forEach(function(key) {
-        var mappedKey = Keycoder.fromKeyCode(key.keyCode.mozilla);
-        expect(mappedKey.keyCode.mozilla).toBe(key.keyCode.mozilla);
       });
 
-    });
+      //Skip the numpad keys since their char codes match those of the other number keys
+      //they won't map back to the same value
+      if(key.charCode !== null && (key.charCode < 42 || key.charCode > 57)) {
 
-    it('all IE key codes to keys', function() {
+        it('ASCII char code ' + key.charCode + ' to a key', function() {
+          var mappedKey = Keycoder.fromCharCode(key.charCode);
+          expect(mappedKey.charCode).toBe(key.charCode);
+        });
 
-      Keycoder.allKeys().forEach(function(key) {
-        var mappedKey = Keycoder.fromKeyCode(key.keyCode.ie);
-        expect(mappedKey.keyCode.ie).toBe(key.keyCode.ie);
-      });
+      }
 
-    });
+      //Skip the numpad keys since their char codes match those of the other number keys
+      //they won't map back to the same value
+      if(key.shift.charCode !== null && (key.shift.charCode < 42 || key.shift.charCode > 57)) {
 
-    it('all ASCII char codes to keys', function() {
+        it('ASCII shift char code ' + key.shift.charCode + ' to a key', function() {
+          var mappedKey = Keycoder.fromCharCode(key.shift.charCode);
+          expect(mappedKey.shift.charCode).toBe(key.shift.charCode);
+        });
+      }
 
-      Keycoder.allKeys().forEach(function(key) {
-
-        //Skip the numpad keys since their char codes match those of the other number keys
-        //they won't map back to the same value
-        if(key.shift.charCode < 42 || key.shift.charCode > 57) {
-
-          if (key.charCode !== null) {
-            var mappedKey = Keycoder.fromCharCode(key.charCode);
-            expect(mappedKey.charCode).toBe(key.charCode);
-          }
-
-        }
-      });
-
-    });
-
-    it('all ASCII shift char codes to keys', function() {
-
-      Keycoder.allKeys().forEach(function(key) {
-
-        //Skip the numpad keys since their char codes match those of the other number keys
-        //they won't map back to the same value
-        if(key.shift.charCode < 42 || key.shift.charCode > 57) {
-
-          if (key.shift.charCode !== null) {
-            var mappedKey = Keycoder.fromCharCode(key.shift.charCode);
-            expect(mappedKey.shift.charCode).toBe(key.shift.charCode);
-          }
-
-        }
-      });
-
-    });
-
-    it('all ASCII char codes to characters', function() {
-
-      Keycoder.allKeys().forEach(function(key) {
-        if(key.charCode !== null && key.character != null) {
+      if(key.charCode !== null && key.character != null) {
+        it('ASCII char code ' + key.charCode + ' to ' + key.character, function() {
           var mappedCharacter = Keycoder.charCodeToCharacter(key.charCode);
           expect(mappedCharacter).toBe(key.character);
-        }
-      });
+        });
+      }
 
-    });
-
-    it('all ASCII shift char codes to characters', function() {
-
-      Keycoder.allKeys().forEach(function(key) {
-
-        if(key.shift.charCode !== null && key.shift.character != null) {
-          var mappedCharacter = Keycoder.charCodeToCharacter(key.shift.charCode);
-          expect(mappedCharacter).toBe(key.shift.character);
-        }
-      });
-
+      if(key.shift.charCode !== null && key.shift.character != null) {
+        it('char code ' + key.charCode + ' to ' + key.shift.character, function() {
+            var mappedCharacter = Keycoder.charCodeToCharacter(key.shift.charCode);
+            expect(mappedCharacter).toBe(key.shift.character);
+        });
+      }
     });
   });
-
 });
