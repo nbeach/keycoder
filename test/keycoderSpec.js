@@ -158,6 +158,106 @@ describe('KeyCoder', function() {
 
   describe('maps', function() {
 
+    describe('event objects with type', function() {
+      var event;
+
+
+
+      describe('keypress', function() {
+
+        beforeEach(function() {
+          event = {
+            type: 'keypress',
+            shiftKey: false
+
+          }
+        });
+
+
+        it('to a printable character', function() {
+          event.charCode = 97;
+          expect(Keycoder.eventToCharacter(event)).toBe('a');
+
+        });
+
+        it('to a shift key printable characters ', function() {
+          event.charCode = 65;
+          event.shiftKey = true;
+          expect(Keycoder.eventToCharacter(event)).toBe('A');
+
+        });
+
+        it('to null if no matching key is found', function() {
+          it('to a shift key printable characters ', function() {
+            event.charCode = -1;
+            expect(Keycoder.eventToCharacter(event)).toBe(null);
+          });
+        });
+
+
+      });
+
+      describe('keyup', function() {
+
+        beforeEach(function() {
+          event = {
+            type: 'keyup',
+            keyCode: 65,
+            shiftKey: false
+          }
+        });
+
+        it('to a printable character', function() {
+          expect(Keycoder.eventToCharacter(event)).toBe('a');
+        });
+
+        it('to a shift key printable characters ', function() {
+          event.shiftKey = true;
+          expect(Keycoder.eventToCharacter(event)).toBe('A');
+
+        });
+
+        it('to null if no matching key is found', function() {
+          it('to a shift key printable characters ', function() {
+            event.keyCode = -1;
+            expect(Keycoder.eventToCharacter(event)).toBe(null);
+          });
+        });
+
+      });
+
+      describe('keydown', function() {
+
+        beforeEach(function() {
+          event = {
+            type: 'keydown',
+            keyCode: 65,
+            shiftKey: false
+          }
+        });
+
+        it('to a printable character', function() {
+          expect(Keycoder.eventToCharacter(event)).toBe('a');
+        });
+
+        it('to a shift key printable characters ', function() {
+          event.shiftKey = true;
+          expect(Keycoder.eventToCharacter(event)).toBe('A');
+
+        });
+
+        it('to null if no matching key is found', function() {
+          it('to a shift key printable characters ', function() {
+            event.keyCode = -1;
+            expect(Keycoder.eventToCharacter(event)).toBe(null);
+          });
+        });
+
+      });
+
+
+    });
+
     describe('printable character', function() {
 
       var characters = ' 0123456789abcdefghijklmnopqrstuvwxyz`-=[]\\;\',./'.split('');

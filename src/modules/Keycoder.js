@@ -143,7 +143,7 @@ exportModule('Keycoder', new (function(Util, Key, keyData) {
 
   /**
    * @param {number} charCode - An ASCII character code
-   * @returns {string|null} Returns that character for the keycode and shift state. Null if the key is not a printable character.
+   * @returns {string|null} Returns the character for the character code. Null if the key is not a printable character.
    */
   this.charCodeToCharacter = function(charCode) {
     var key = this.fromCharCode(charCode);
@@ -152,6 +152,19 @@ exportModule('Keycoder', new (function(Util, Key, keyData) {
     }
 
     return key.charCode === charCode ? key.character : key.shift.character;
+  };
+
+  /**
+   * @param {number} event - A keydown, keyup, or keypress event object
+   * @returns {string|null} - The character pressed in the key event. Null if the key pressed is not a printable character, or the event is not a key event.
+   */
+  this.eventToCharacter = function(event) {
+    var key = this.fromEvent(event);
+    if(key === null) {
+      return null;
+    }
+
+    return event.shiftKey ? key.shift.character : key.character;
   };
 
   /**
@@ -189,6 +202,23 @@ exportModule('Keycoder', new (function(Util, Key, keyData) {
     }
 
     return this._getKeyFromMap(charCode, asciiCodeToKeyMap);
+  };
+
+  /**
+   * Maps a keypress, keydown, or keyup event object to a key
+   * @param {object} event - A keydown, keyup, or keypress event object
+   * @returns {Key|null} A Key object. Null if no key was pressed in the provided event.
+   */
+  this.fromEvent = function(event) {
+    var key = null;
+
+    if(event.type === 'keydown' || event.type === 'keyup') {
+      key = this.fromKeyCode(event.keyCode);
+    } else if(event.type === 'keypress') {
+      key = this.fromCharCode(event.charCode);
+    }
+
+    return key;
   };
 
   /**
