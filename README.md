@@ -26,9 +26,11 @@ Keycoder is released under the [MIT license](https://github.com/nbeach/keycoder/
     * [.key](#module_Keycoder.key) : <code>object</code>
     * [.toCharacter(keyCode, shift)](#module_Keycoder.toCharacter) ⇒ <code>string</code> &#124; <code>null</code>
     * [.charCodeToCharacter(charCode)](#module_Keycoder.charCodeToCharacter) ⇒ <code>string</code> &#124; <code>null</code>
+    * [.eventToCharacter(event)](#module_Keycoder.eventToCharacter) ⇒ <code>string</code> &#124; <code>null</code>
     * [.fromCharacter(character)](#module_Keycoder.fromCharacter) ⇒ <code>[Key](#Key)</code> &#124; <code>null</code>
     * [.fromKeyCode(keyCode)](#module_Keycoder.fromKeyCode) ⇒ <code>[Key](#Key)</code> &#124; <code>null</code>
     * [.fromCharCode(charCode)](#module_Keycoder.fromCharCode) ⇒ <code>[Key](#Key)</code> &#124; <code>null</code>
+    * [.fromEvent(event)](#module_Keycoder.fromEvent) ⇒ <code>[Key](#Key)</code> &#124; <code>null</code>
     * [.allKeys()](#module_Keycoder.allKeys) ⇒ <code>[Array.&lt;Key&gt;](#Key)</code>
 
 <a name="module_Keycoder.key"></a>
@@ -100,11 +102,21 @@ An object containing references to all named keys.
 
 ### Keycoder.charCodeToCharacter(charCode) ⇒ <code>string</code> &#124; <code>null</code>
 **Kind**: static method of <code>[Keycoder](#module_Keycoder)</code>  
-**Returns**: <code>string</code> &#124; <code>null</code> - Returns that character for the keycode and shift state. Null if the key is not a printable character.  
+**Returns**: <code>string</code> &#124; <code>null</code> - Returns the character for the character code. Null if the key is not a printable character.  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | charCode | <code>number</code> | An ASCII character code |
+
+<a name="module_Keycoder.eventToCharacter"></a>
+
+### Keycoder.eventToCharacter(event) ⇒ <code>string</code> &#124; <code>null</code>
+**Kind**: static method of <code>[Keycoder](#module_Keycoder)</code>  
+**Returns**: <code>string</code> &#124; <code>null</code> - - The character pressed in the key event. Null if the key pressed is not a printable character, or the event is not a key event.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| event | <code>number</code> | A keydown, keyup, or keypress event object |
 
 <a name="module_Keycoder.fromCharacter"></a>
 
@@ -137,6 +149,18 @@ Maps an ASCII character code to a Key object
 | Param | Type | Description |
 | --- | --- | --- |
 | charCode | <code>number</code> | An ASCII character code |
+
+<a name="module_Keycoder.fromEvent"></a>
+
+### Keycoder.fromEvent(event) ⇒ <code>[Key](#Key)</code> &#124; <code>null</code>
+Maps a keypress, keydown, or keyup event object to a key
+
+**Kind**: static method of <code>[Keycoder](#module_Keycoder)</code>  
+**Returns**: <code>[Key](#Key)</code> &#124; <code>null</code> - A Key object. Null if no key was pressed in the provided event.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| event | <code>object</code> | A keydown, keyup, or keypress event object |
 
 <a name="module_Keycoder.allKeys"></a>
 

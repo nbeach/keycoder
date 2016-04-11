@@ -1,6 +1,6 @@
 {
   "name": "keycoder",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "A lightweight JavaScript library for interpreting event key and character codes across browsers.",
   "main": "dist/keycoder.js",
   "scripts": {
