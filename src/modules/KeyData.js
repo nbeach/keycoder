@@ -35,7 +35,7 @@ var KeyData = [
   {char: "x", shift: "X", ie: 88, ascii: {norm: 120, shift: 88}},
   {char: "y", shift: "Y", ie: 89, ascii: {norm: 121, shift: 89}},
   {char: "z", shift: "Z", ie: 90, ascii: {norm: 122, shift: 90}},
-  {char: " ", ie: 32, ascii: {norm: 32}},
+  {char: " ", names: ["SPACE_BAR"], ie: 32, ascii: {norm: 32}},
   {char: ";", shift: ":", ie: 186, moz: 59, ascii: {norm: 59, shift: 58}},
   {char: "=", shift: "+", ie: 187, moz: 61, ascii: {norm: 61, shift: 43}},
   {char: ",", shift: "<", ie: 188, ascii: {norm: 44, shift: 60}},
