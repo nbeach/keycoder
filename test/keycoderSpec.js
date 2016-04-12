@@ -3,6 +3,10 @@ var expect = require('chai').expect;
 
 describe('KeyCoder', function() {
 
+  it('all keys returns the correct number of keys', function() {
+    expect(Keycoder.allKeys().length).to.equal(100);
+  });
+
   it('creates all named keys', function() {
 
     Keycoder.allKeys().forEach(function(key) {
