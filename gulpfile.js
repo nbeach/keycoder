@@ -12,14 +12,7 @@ var DESTINATION_DIR = 'dist/';
 var OUTPUT_FILENAME = 'keycoder.js';
 var MINIFIED_FILENAME = OUTPUT_FILENAME.replace('.js', '.min.js');
 
-//Files are in the order such that the modules are below their dependencies
-var sourceFiles = [
-  'src/exportModule.js',
-  'src/modules/Util.js',
-  'src/modules/KeyData.js',
-  'src/modules/Key.js',
-  'src/modules/Keycoder.js'
-];
+var sourceFiles = require('./source-files');
 
 gulp.task('build', function() {
   return gulp

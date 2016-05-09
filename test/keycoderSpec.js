@@ -1,6 +1,3 @@
-var Keycoder = require('../dist/keycoder.js');
-var expect = require('chai').expect;
-
 describe('KeyCoder', function() {
 
   it('all keys returns the correct number of keys', function() {

@@ -6,9 +6,9 @@
   "scripts": {
     "build": "gulp",
     "build:watch": "gulp watch",
-    "test": "istanbul cover _mocha -- -R progress",
-    "test:watch": "mocha --recursive -w -R min",
-    "ci-test": "istanbul cover _mocha --report lcovonly -- -R dot && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
+    "test": "karma start",
+    "test:watch": "karma start --auto-watch --no-single-run",
+    "ci-test": "karma start karma.conf.ci.js"
   },
   "repository": {
     "type": "git",
@@ -31,6 +31,7 @@
   ],
   "devDependencies": {
     "chai": "^3.5.0",
+    "chai-spies": "^0.7.1",
     "coveralls": "^2.11.9",
     "gulp": "^3.9.1",
     "gulp-add-src": "^0.2.0",
@@ -39,8 +40,15 @@
     "gulp-rename": "^1.2.2",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-uglify": "^1.5.3",
-    "gulp-wrap": "^0.11.0",
-    "istanbul": "^0.4.3",
-    "mocha": "^2.4.5"
+    "gulp-wrap": "^0.12.0",
+    "karma": "^0.13.22",
+    "karma-chai": "^0.1.0",
+    "karma-chai-spies": "^0.1.4",
+    "karma-coverage": "^1.0.0",
+    "karma-coveralls": "^1.1.2",
+    "karma-mocha": "^1.0.1",
+    "karma-phantomjs-launcher": "^1.0.0",
+    "mocha": "^2.4.5",
+    "phantomjs-prebuilt": "^2.1.7"
   }
 }
