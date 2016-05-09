@@ -2,8 +2,8 @@ language: node_js
 node_js:
 - 5.1.0
 script:
-- npm run build
 - npm run ci-test
+- npm run build
 env:
   global:
   - secure: AERBMTo4K3AlI8BLI3lW9gQKsNaUuTUUyylUXxJKSeXQZJ4CCHDHAz1gj4l7QxW9uIEtbmANe7DuEkB3XHUSJaiPDvKoTzHegifrxPBgZNdKHF4OCSGTLB5mDNPPbgPjCeuai2Ez7s0B/OXD3FSR141qrCY6zcbiykq+SAiLBfYE3X4B4zuJEP9yiPEXWdjBk+ezQdZHHwM9SMza42S/jEef3VJd0l2KQF54IO+p2LujVxVMc6qxaaVj7/zoyVVZDu4sX7oi5CN/MBhb7PnPVYn5TxhLwSXiasUUTaUbFKssXHV8FqgV/dciQgwhlHlOdKOaE0sJvuJ+a/z+XkOlk5WDrSUapuWzFgXCfqAVKPRHeXGDIumeo93Q8m0lOPAGas3ILFontQhLhMMipoN1iRrum913S4hX825Gzy5eLcN3agPkLVt1Q8Gc4BsU+JJLiV2ssDmCst/QWoOP4+Ks+dmVvEmuLsY4moq6iCuVHnlGb6qMEY1StGr6yXPbRn3/CKmmNOb4SbU7EAH5KHvpTlu3MXlQFCEb6QjZkhxWpfm/KcD4BSA+XOeSuyWcDkXQV2ZjCKA2RIu5oNgcsOM6GFZtOsSknr3e+yNPO0uS8oTf6DD+0ZGou4eAyYdMnbL16gYI8tBuJLnDSeNJCZpS3rZXfAjCS0q+s1lmD5PYxKQ=
