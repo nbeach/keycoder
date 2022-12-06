@@ -32,7 +32,7 @@
   "devDependencies": {
     "chai": "3.5.0",
     "chai-spies": "0.7.1",
-    "coveralls": "2.11.9",
+    "coveralls": "2.13.3",
     "gulp": "3.9.1",
     "gulp-add-src": "0.2.0",
     "gulp-concat": "2.6.0",
@@ -49,6 +49,6 @@
     "karma-mocha": "1.0.1",
     "karma-phantomjs-launcher": "1.0.0",
     "mocha": "2.4.5",
-    "phantomjs-prebuilt": "2.1.7"
+    "phantomjs-prebuilt": "2.1.16"
   }
 }
